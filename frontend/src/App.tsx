@@ -1,8 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
-
 
 // Point Eel web socket to the instance
 declare const window: any;

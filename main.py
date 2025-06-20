@@ -23,7 +23,7 @@ def start_eel(develop):
     """Start Eel with either production or development configuration."""
 
     if develop:
-        directory = 'frontend'
+        directory = 'frontend/src'
         app = None
         page = {'port': 5173}
         eel_port = 5169
