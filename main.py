@@ -9,43 +9,14 @@ import os
 import platform
 import random
 import sys
-import importlib
-import socket, errno
 from py_src.contrib.replace_in_file import replaceInfile, findFileRe
 from py_src.contrib.port_check import find_unused_port
 
 import eel
 
-if '_PYIBoot_SPLASH' in os.environ and importlib.util.find_spec("pyi_splash"):
-    import pyi_splash
-    pyi_splash.update_text('UI Loaded ...')
-    pyi_splash.close()
-
-
 @eel.expose  # Expose function to JavaScript
-def say_hello_py(x):
-    """Print message from JavaScript on app initialization, then call a JS function."""
-    print('Hello from %s' % x)  # noqa T001
-    eel.say_hello_js('Python {from within say_hello_py()}!')
-
-
-@eel.expose
-def expand_user(folder):
-    """Return the full path to display in the UI."""
-    return '{}/*'.format(os.path.expanduser(folder))
-
-
-@eel.expose
-def pick_file(folder):
-    """Return a random file from the specified folder."""
-    folder = os.path.expanduser(folder)
-    if os.path.isdir(folder):
-        listFiles = [_f for _f in os.listdir(folder) if not os.path.isdir(os.path.join(folder, _f))]
-        if len(listFiles) == 0:
-            return 'No Files found in {}'.format(folder)
-        return random.choice(listFiles)
-    else:
-        return '{} is not a valid folder'.format(folder)
+def say_hello_py(message):
+    return f"Hello from Python: {message}"
 
 
 def start_eel(develop):
@@ -69,19 +40,9 @@ def start_eel(develop):
         replaceInfile(f"./dist_vite/assets/{replace_file}", 'ws://localhost:....', f"ws://localhost:{eel_port}")
         replaceInfile("./dist_vite/index.html", 'http://localhost:.....eel.js', f"http://localhost:{eel_port}/eel.js")
 
-    
-
-    
-
     eel.init(directory, ['.tsx', '.ts', '.jsx', '.js', '.html'])
 
-    # These will be queued until the first connection is made, but won't be repeated on a page reload
-    say_hello_py('Python World!')
-    eel.say_hello_js('Python World!')   # Call a JavaScript function (must be after `eel.init()`)
-
     eel.show_log('https://github.com/samuelhwilliams/Eel/issues/363 (show_log)')
-
-    
 
     eel_kwargs = dict(
         host='localhost',
@@ -97,14 +58,6 @@ def start_eel(develop):
             eel.start(page, mode='edge', **eel_kwargs)
         else:
             raise
-
-
-
-
-
-
-    
-
 
 if __name__ == '__main__':
     import sys
