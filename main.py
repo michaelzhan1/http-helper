@@ -2,7 +2,7 @@
 
 To build for production:
 npm run build
-python -m eel main.py dist_vite --onefile --splash splashfile.png --path env/lib/site-packages --noconsole
+python -m eel main.py dist_vite --onefile --path env/lib/site-packages --noconsole
 """
 
 import os
@@ -52,7 +52,7 @@ def start_eel(develop):
     """Start Eel with either production or development configuration."""
 
     if develop:
-        directory = 'web_src'
+        directory = 'frontend'
         app = None
         page = {'port': 5173}
         eel_port = 5169
