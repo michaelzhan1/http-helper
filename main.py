@@ -13,10 +13,12 @@ from py_src.curl import curl_request
 
 import eel
 
+
 @eel.expose
 def make_curl_request(url, method='GET', headers=None, options=None, body=None):
     """Expose a function to perform a curl request from the Eel frontend."""
     return curl_request(url, method, headers, options, body)
+
 
 def start_eel(develop):
     """Start Eel with either production or development configuration."""
@@ -36,8 +38,10 @@ def start_eel(develop):
 
         # replace the port in the web files
         replace_file = findFileRe("./dist_vite/assets", "index.*.js")
-        replaceInfile(f"./dist_vite/assets/{replace_file}", 'ws://localhost:....', f"ws://localhost:{eel_port}")
-        replaceInfile("./dist_vite/index.html", 'http://localhost:.....eel.js', f"http://localhost:{eel_port}/eel.js")
+        replaceInfile(f"./dist_vite/assets/{replace_file}",
+                      'ws://localhost:....', f"ws://localhost:{eel_port}")
+        replaceInfile("./dist_vite/index.html", 'http://localhost:.....eel.js',
+                      f"http://localhost:{eel_port}/eel.js")
 
     eel.init(directory, ['.tsx', '.ts', '.jsx', '.js', '.html'])
 
@@ -48,13 +52,14 @@ def start_eel(develop):
     )
     try:
         eel.start(page, mode=app, **eel_kwargs)
- 
+
     except EnvironmentError:
         # If Chrome isn't found, fallback to Microsoft Edge on Win10 or greater
         if sys.platform in ['win32', 'win64'] and int(platform.release()) >= 10:
             eel.start(page, mode='edge', **eel_kwargs)
         else:
             raise
+
 
 if __name__ == '__main__':
     import sys
