@@ -5,8 +5,8 @@ declare global {
   interface Window {
     eel: {
       set_host: (host: string) => void;
-      say_hello_py: (
-        message: string,
+      make_curl_request: (
+        url: string,
       ) => (callback: (response: string) => void) => void;
     };
   }
@@ -30,7 +30,7 @@ function App() {
       />
       <button
         onClick={() =>
-          eel.say_hello_py(input)((response: string) => setResponse(response))
+          eel.make_curl_request(input)((response: string) => setResponse(response))
         }
       >
         Send to Python

@@ -5,19 +5,18 @@ npm run build
 python -m eel main.py dist_vite --onefile --path env/lib/site-packages --noconsole
 """
 
-import os
 import platform
-import random
 import sys
-from py_src.contrib.replace_in_file import replaceInfile, findFileRe
-from py_src.contrib.port_check import find_unused_port
+from py_src.replace_in_file import replaceInfile, findFileRe
+from py_src.port_check import find_unused_port
+from py_src.curl import curl_request
 
 import eel
 
-@eel.expose  # Expose function to JavaScript
-def say_hello_py(message):
-    return f"Hello from Python: {message}"
-
+@eel.expose
+def make_curl_request(url, method='GET', headers=None, options=None, body=None):
+    """Expose a function to perform a curl request from the Eel frontend."""
+    return curl_request(url, method, headers, options, body)
 
 def start_eel(develop):
     """Start Eel with either production or development configuration."""
