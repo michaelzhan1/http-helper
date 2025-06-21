@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint ./frontend/src --ext .ts,.tsx",
-    "lint:fix": "eslint ./frontend/src --ext .ts,.tsx --fix",
-    "format": "prettier --write \"frontend/src/**/*.{js,ts,jsx,tsx,json,css}\"",
-    "format:check": "prettier --check \"frontend/src/**/*.{js,ts,jsx,tsx,json,css}\""
+    "lint": "eslint ./src --ext .ts,.tsx",
+    "lint:fix": "eslint ./src --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx,json,css}\"",
+    "format:check": "prettier --check \"src/**/*.{js,ts,jsx,tsx,json,css}\""
   },
   "dependencies": {
     "react": "^18.2.0",

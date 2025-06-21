@@ -9,14 +9,14 @@ const __dirname = path.dirname(__filename);
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  root: "frontend/src",
+  root: "src",
   build : {
     outDir: "./../dist_vite",
     emptyOutDir: true,
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'frontend/src'),
+      '@': path.resolve(__dirname, 'src'),
     }
   }
 })

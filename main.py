@@ -23,7 +23,7 @@ def start_eel(develop):
     """Start Eel with either production or development configuration."""
 
     if develop:
-        directory = 'frontend/src'
+        directory = 'src'
         app = None
         page = {'port': 5173}
         eel_port = 5169
@@ -41,8 +41,6 @@ def start_eel(develop):
         replaceInfile("./dist_vite/index.html", 'http://localhost:.....eel.js', f"http://localhost:{eel_port}/eel.js")
 
     eel.init(directory, ['.tsx', '.ts', '.jsx', '.js', '.html'])
-
-    eel.show_log('https://github.com/samuelhwilliams/Eel/issues/363 (show_log)')
 
     eel_kwargs = dict(
         host='localhost',

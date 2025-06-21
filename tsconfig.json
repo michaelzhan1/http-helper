@@ -20,7 +20,7 @@
       "@/*": ["./src/*"] // Path alias for src folder
     }
   },
-  "include": ["frontend/src"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist_vite", "dist", "build", "env"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
