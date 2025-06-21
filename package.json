@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "init:env": "bash -c 'source init-env.sh'",
     "clean": "rm -rf dist_vite && rm -rf dist && rm -rf build",
     "dev": "concurrently \"vite\" \"bash -c 'env/Scripts/python main.py true'\"",
     "build": "npm run clean && tsc && vite build && bash -c 'env/Scripts/python -m eel main.py dist_vite --onedir --path env/lib/site-packages --noconsole --noconfirm'",
