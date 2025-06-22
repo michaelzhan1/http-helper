@@ -30,14 +30,15 @@ def replaceInfile(file_path, search_text_re, replace_text):
 
     usage: replaceInfile("./dist_vite/assets/index-f8b4bc6c.js", 'ws://localhost:....', 'ws://localhost:6820') 
     """
-    with open(file_path, 'r+') as f:
-        for chunk, start_byte, end_byte in readInChunks(f):
-            if re.search(search_text_re, chunk):
-                print("found search text in block", start_byte, "end_byte", end_byte )
-                f.seek(start_byte)
-                f.write(re.sub(search_text_re, replace_text, chunk, count=1))
-                f.close()
-                break
+    with open(file_path, 'r+', encoding='utf8') as f:
+        # replace all at once
+        file_data = f.read()
+        new_data = re.sub(search_text_re, replace_text, file_data, count=1)
+
+        # clear old data and write new data
+        f.seek(0)
+        f.write(new_data)
+        f.truncate()
 
 def findFileRe(rootdir, regex_str):
     """
