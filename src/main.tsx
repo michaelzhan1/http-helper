@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import GlobalStyle from '@/styles/global.style';
 
 // Extend the Window interface to include 'eel'
 declare global {
@@ -20,6 +21,7 @@ eel.set_host('ws://localhost:5169');
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
+    <GlobalStyle />
     <App />
   </StrictMode>,
 );
