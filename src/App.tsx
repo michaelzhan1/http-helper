@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { eel } from '@/main';
 
 function App() {
@@ -15,7 +16,9 @@ function App() {
       />
       <button
         onClick={() =>
-          eel.make_curl_request(input)((response: string) => setResponse(response))
+          eel.make_curl_request(input)((response: string) =>
+            setResponse(response),
+          )
         }
       >
         Send to Python
