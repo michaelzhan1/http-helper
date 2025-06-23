@@ -7,17 +7,22 @@ python -m eel main.py dist_vite --onefile --path env/lib/site-packages --noconso
 
 import platform
 import sys
+from typing import Dict
 from py_src.replace_in_file import replaceInfile, findFileRe
 from py_src.port_check import find_unused_port
-from py_src.http import http_request
+from py_src.http import http_request, MethodType
 
 import eel
 
 
 @eel.expose
-def make_http_request(url, method='GET', headers=None, options=None, body=None):
-    """Expose a function to perform a curl request from the Eel frontend."""
-    return http_request(url, method, headers, options, body)
+def make_http_request(url: str,
+                      method: MethodType,
+                      params: Dict[str, str],
+                      headers: Dict[str, str],
+                      body: str) -> Dict[str, str]:
+    """Expose a function to perform an http request from the Eel frontend."""
+    return http_request(url, method, params, headers, body)
 
 
 def start_eel(develop):

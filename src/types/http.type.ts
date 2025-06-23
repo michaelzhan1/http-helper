@@ -1,4 +1,4 @@
-import { METHODS } from "@/constants/curl.constant";
+import { METHODS } from "@/constants/http.constant";
 
 export type MethodType = typeof METHODS[number];
 

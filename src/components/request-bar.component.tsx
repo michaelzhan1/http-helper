@@ -2,7 +2,7 @@ import { CSSProperties, ChangeEvent, useState } from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 
-import { METHOD_OPTIONS } from '@/constants/curl.constant';
+import { METHOD_OPTIONS } from '@/constants/http.constant';
 import { MethodOption, MethodType } from '@/types/http.type';
 import { RequestBarProps } from '@/types/props.type';
 

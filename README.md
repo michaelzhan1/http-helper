@@ -1,6 +1,6 @@
-# Curl Caller
+# HTTP Helper
 
-This is an extremely lightweight clone of postman that lets you run and store cURL calls. It uses a React frontend with a Python backend, connected via the [Eel](https://github.com/python-eel/Eel) Python package and built using PyInstaller. THis was created from the [template](https://github.com[/KevinRobben](https://github.com/KevinRobben)/Eel/tree/main/examples/11%20-%20ViteReact_ts) by [@KevinRobben](https://github.com/KevinRobben). **Currently, this project is built with Windows in mind only.**
+This is an extremely lightweight clone of Postman that lets you run and store basic HTTP requests. It uses a React frontend with a Python backend, connected via the [Eel](https://github.com/python-eel/Eel) Python package and built using PyInstaller. THis was created from the [template](https://github.com[/KevinRobben](https://github.com/KevinRobben)/Eel/tree/main/examples/11%20-%20ViteReact_ts) by [@KevinRobben](https://github.com/KevinRobben). **Currently, this project is built with Windows in mind only.**
 
 ## Quick Start
 
