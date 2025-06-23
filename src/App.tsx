@@ -1,20 +1,37 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import RequestBar from '@/components/request-bar.component';
-import { MethodType } from '@/types/curl.type';
+import { eel } from '@/main';
+import { EelHttpResponse, MethodType } from '@/types/http.type';
 
 function App() {
+  const [response, setResponse] = useState<EelHttpResponse | null>(null);
+
   const onSend = (method: MethodType, url: string) => {
     if (url === '') {
       alert('URL is required');
       return;
     }
-    console.log(`Calling ${url} with ${method}`);
+    eel.make_http_request(
+      url,
+      method,
+      {},
+      {},
+      '',
+    )((response) => setResponse(response));
   };
 
   return (
     <FullPageVerticalFlexContainer className='App'>
       <RequestBar onSend={onSend} />
+      {response && (
+        <div>
+          <div>{response.body}</div>
+          <div>{response.status}</div>
+          <div>{JSON.stringify(response.headers)}</div>
+        </div>
+      )}
     </FullPageVerticalFlexContainer>
   );
 }

@@ -3,7 +3,7 @@ import Select from 'react-select';
 import styled from 'styled-components';
 
 import { METHOD_OPTIONS } from '@/constants/curl.constant';
-import { MethodOption, MethodType } from '@/types/curl.type';
+import { MethodOption, MethodType } from '@/types/http.type';
 import { RequestBarProps } from '@/types/props.type';
 
 const RequestBar = ({ onSend }: RequestBarProps) => {

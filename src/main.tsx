@@ -3,15 +3,20 @@ import { createRoot } from 'react-dom/client';
 
 import App from '@/App';
 import GlobalStyle from '@/styles/global.style';
+import { EelHttpResponse, MethodType } from '@/types/http.type';
 
 // Extend the Window interface to include 'eel'
 declare global {
   interface Window {
     eel: {
       set_host: (host: string) => void;
-      make_curl_request: (
+      make_http_request: (
         url: string,
-      ) => (callback: (response: string) => void) => void;
+        method: MethodType,
+        params: Record<string, string>,
+        headers: Record<string, string>,
+        body: string,
+      ) => (callback: (response: EelHttpResponse) => void) => void;
     };
   }
 }

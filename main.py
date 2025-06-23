@@ -9,15 +9,15 @@ import platform
 import sys
 from py_src.replace_in_file import replaceInfile, findFileRe
 from py_src.port_check import find_unused_port
-from py_src.curl import curl_request
+from py_src.http import http_request
 
 import eel
 
 
 @eel.expose
-def make_curl_request(url, method='GET', headers=None, options=None, body=None):
+def make_http_request(url, method='GET', headers=None, options=None, body=None):
     """Expose a function to perform a curl request from the Eel frontend."""
-    return curl_request(url, method, headers, options, body)
+    return http_request(url, method, headers, options, body)
 
 
 def start_eel(develop):
